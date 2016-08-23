@@ -22,6 +22,9 @@
   npm: path=/opt/lisk-source
   become: yes
   become_user: vagrant
+  
+- name: "Install forever (to run Node.js app)."
+  npm: name=forever global=yes state=present
 
 - name: "Check list of Node.js apps running."
   command: forever list
