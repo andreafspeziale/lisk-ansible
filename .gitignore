@@ -2,3 +2,4 @@ roles/community
 .vagrant
 DS_Store
 .idea
+playbook.retry

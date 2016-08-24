@@ -4,7 +4,7 @@
 #- name: Creates directory
 #  file: path=/opt/lisk-source state=directory
 
-- name: Lisk | Make sure the dependencies are installed
+- name: Make sure the dependencies are installed"
   apt:
     pkg: "{{item}}"
     state: present
@@ -12,50 +12,53 @@
     cache_valid_time: "{{apt_cache_valid_time | default (3600)}}"
   with_items: "{{dep_packages}}"
 
+# - name: install forever (to run Node.js app).
+#   npm: name=forever global=yes state=present
+
+- name: "Downloading the install script"
+  get_url: url=https://downloads.lisk.io/scripts/installLisk.sh dest=/home/vagrant
+
 - include: setup-test.yml
   when: env == 'test'
 
 - include: setup-main.yml
   when: env == 'main'
 
-- name: install packages
-  npm: path=/opt/lisk-source
-  become: yes
-  become_user: vagrant
-  
-- name: "Install forever (to run Node.js app)."
-  npm: name=forever global=yes state=present
+# - name: install packages
+#   npm: path=/opt/lisk-source
+#   become: yes
+#   become_user: vagrant
 
-- name: "Check list of Node.js apps running."
-  command: forever list
-  register: forever_list
-  changed_when: false
-  become: yes
-  become_user: vagrant
+# - name: "Check list of Node.js apps running."
+#   command: forever list
+#   register: forever_list
+#   changed_when: false
+#   become: yes
+#   become_user: vagrant
 
-- name: "psql privilege"
-  postgresql_privs: >
-    database={{lisk_db}}
-    privs=ALL
-    type=database
-    role=vagrant
+# - name: "psql privilege"
+#   postgresql_privs: >
+#     database={{lisk_db}}
+#     privs=ALL
+#     type=database
+#     role=vagrant
+#
+# - name: "psql privilege"
+#   postgresql_privs: >
+#     database={{lisk_db}}
+#     privs=ALL
+#     type=database
+#     role=lisk
 
-- name: "psql privilege"
-  postgresql_privs: >
-    database={{lisk_db}}
-    privs=ALL
-    type=database
-    role=lisk
-
-- name: "Import blockchain"
-  command: psql -qd lisk_test -U lisk < blockchain.db
-  args:
-    chdir: /opt/lisk-source
-
-- name: "Start example Node.js app."
-  command: forever start app.js
-  args:
-    chdir: /opt/lisk-source
-  when: "forever_list.stdout.find('app.js') == -1"
-  become: yes
-  become_user: vagrant
+# - name: "Import blockchain"
+#   command: psql -qd lisk_test -U lisk < blockchain.db
+#   args:
+#     chdir: /opt/lisk-source
+#
+# - name: "Start example Node.js app."
+#   command: forever start app.js
+#   args:
+#     chdir: /opt/lisk-source
+#   when: "forever_list.stdout.find('app.js') == -1"
+#   become: yes
+#   become_user: vagrant
