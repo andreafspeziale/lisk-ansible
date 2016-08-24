@@ -48,7 +48,7 @@
           encrypted: no
 
     roles:
-      - ANXS.postgresql
+      # - ANXS.postgresql
       - geerlingguy.nodejs
       - lisk
       - greendayonfire.mongodb

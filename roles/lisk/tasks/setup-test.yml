@@ -1,17 +1,21 @@
-# - name: download source test
-#   unarchive: src={{source_test}} dest=/opt remote_src=yes owner=vagrant group=vagrant
-#   become: yes
+# - name: "Installing python req"
+#     become: yes
+#     apt: pip
 #
-# - name: download source blockchain
-#   get_url: url={{blockchain_test}} dest=/opt/lisk-source remote_src=yes owner=vagrant group=vagrant
-#   become: yes
-#
-# - name: unzip blockchain
-#   command: gunzip blockchain.db.gz
-#   args:
-#     chdir: /opt/lisk-source
-#     creates: /opt/lisk-source/blockchain.db
-#   become: yes
-#   become_user: vagrant
-- name: "Running the test installation script"
-  shell: installLisk.sh install -r {{env}}
+# - name: "Installing the req pkg"
+#     become: yes
+#     pip: pexpect
+
+# - expect:
+#     become: yes
+#     chdir: /home/vagrant
+#     command: sh installLisk.sh install -r {{env}}
+#     echo: yes
+#     responses:
+#         path: /home/vagrant
+#         ntp: y
+
+- name: "Running Lisk installation script"
+  command: sh installLisk.sh install -r {{env}}
+  args:
+    chdir: "/home/vagrant"
