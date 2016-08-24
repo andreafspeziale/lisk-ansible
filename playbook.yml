@@ -7,7 +7,7 @@
       - nodejs_version: "4.x"
       - nodejs_npm_global_packages:
         - name: forever
-      #- mongodb_bind_ip: 0.0.0.0
+      - mongodb_net_bindip: 0.0.0.0
       - postgresql_version: 9.5
       - postgresql_listen_addresses:
         - '*'
@@ -24,7 +24,13 @@
           hstore: yes         # flag to install the hstore extension on this database (yes/no)
           uuid_ossp: yes      # flag to install the uuid-ossp extension on this database (yes/no)
           citext: yes         # flag to install the citext extension on this database (yes/no)
-
+      - postgresql_user_privileges:
+        - name: vagrant                   # user name
+          db: "{{ lisk_db }}"                  # database
+          priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
+        - name: lisk                   # user name
+          db: "{{ lisk_db }}"                  # database
+          priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
         # List of database extensions to be created (optional)
       - postgresql_database_extensions:
         - db: "{{ lisk_db }}"
@@ -45,6 +51,7 @@
       - ANXS.postgresql
       - geerlingguy.nodejs
       - lisk
+      - greendayonfire.mongodb
     tasks:
       - name: locale
         locale_gen: name=en_US.UTF-8 state=present
