@@ -1,1 +1,4 @@
 roles/community
+.vagrant
+DS_Store
+.idea
