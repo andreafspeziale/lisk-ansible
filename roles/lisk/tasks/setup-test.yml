@@ -1,20 +1,17 @@
 - name: "Installing python req"
+  become: True
   apt: name=python-pip state=latest
 
 - name: "Installing the req pkg"
-  become: yes
+  become: True
   pip: name=pexpect state=latest
 
 - name: "Running Lisk installation"
+  become: false
   expect:
     chdir: /home/vagrant
     command: sh installLisk.sh install -r {{env}}
     responses:
-        'Where do you want to install Lisk to? (Default /home/vagrant):': "\n"
-        'Would like to install NTP? (y/n):': "y"
+        'Where do you want to install Lisk to? (Default /home/vagrant):': /home/vagrant
+        'Would like to install NTP? (y/n):': y
     echo: yes
-
-# - name: "Running Lisk installation script"
-#   command: sh installLisk.sh install -r {{env}}
-#   args:
-#     chdir: "/home/vagrant"
