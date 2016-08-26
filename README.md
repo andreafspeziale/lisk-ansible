@@ -20,3 +20,8 @@ You can check if localhost:7000 responses with the node interface.
 You can also check the loading status of bloackchain with this api
 
     - localhost:7000/api/loader/status/sync
+
+# ToDo
+
+    - after turning the VM off and on, check if lisk has started
+    - use custom templates for the lisk config.json
