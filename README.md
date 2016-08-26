@@ -1,6 +1,6 @@
 # lisk-ansible
 This repository uses Vagrant + Ansible to create a Lisk node environment without pain.<br>
-It will also install the Node and starts it.
+It will also install the Node + packages and some other utils like MongoDB.
 
 # Pre-req
     - virtualbox
@@ -10,6 +10,13 @@ It will also install the Node and starts it.
     - Vagrant
 
 # Install
-
     - ansible-galaxy install -r requirements.yml
     - vagrant up
+
+# Notes
+At this point you will have a running lisk node.
+You can check if localhost:7000 responses with the node interface.
+
+You can also check the loading status of bloackchain with this api
+
+    - localhost:7000/api/loader/status/sync
