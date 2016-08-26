@@ -12,6 +12,6 @@
   expect:
     command: bash installLisk.sh install -r {{env}}
     responses:
-        'Where do you want to install Lisk to? (Default /home/vagrant): ': "/home/vagrant"
-        'Would like to install NTP\? (y\/n): ': "y"
+        'install Lisk to': '/home/vagrant'
+        'install NTP': 'y'
     echo: yes
