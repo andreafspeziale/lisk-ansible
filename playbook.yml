@@ -8,7 +8,9 @@
         - name: forever
       - mongodb_net_bindip: 0.0.0.0
     roles:
-      - geerlingguy.nodejs
+      - python
+      - node
+      # - geerlingguy.nodejs
       - lisk
       - greendayonfire.mongodb
     tasks:
