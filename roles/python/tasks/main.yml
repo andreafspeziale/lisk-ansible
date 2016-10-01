@@ -1,0 +1,7 @@
+---
+- name: install essentials
+  apt: name=build-essential state=latest
+- name: install python setuptools
+  apt: name=python-setuptools state=latest
+- name: install python-dev
+  apt: name=python-dev state=latest
