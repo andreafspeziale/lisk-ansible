@@ -12,6 +12,7 @@
       - node
       # - geerlingguy.nodejs
       - lisk
+      - pgsql
       - greendayonfire.mongodb
     tasks:
       - name: locale

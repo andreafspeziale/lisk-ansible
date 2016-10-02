@@ -1,14 +1,7 @@
 ---
 # instaling lisk depending on env variable
-- name: "Installing python req"
-  become: True
-  apt: name=python-pip state=latest
 
-- name: "Installing the req pkg"
-  become: True
-  pip: name=pexpect state=latest
-
-- name: "Running Lisk installation"
+- name: running Lisk installation
   become: True
   become_user: vagrant
   expect:
