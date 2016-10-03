@@ -1,7 +1,7 @@
 ---
 # tasks file for lisk
 
-- name: make sure the dependencies are installed"
+- name: Make sure the dependencies are installed"
   apt:
     pkg: "{{item}}"
     state: present
@@ -9,10 +9,10 @@
     cache_valid_time: "{{apt_cache_valid_time | default (3600)}}"
   with_items: "{{dep_packages}}"
 
-- name: install forever (to run Node.js app).
+- name: Install forever (to run Node.js app)
   npm: name=forever global=yes state=present
 
-- name: downloading the install script
+- name: Downloading the install script
   get_url: url=https://downloads.lisk.io/scripts/installLisk.sh dest=/home/vagrant
 
 - include: setup-lisk.yml

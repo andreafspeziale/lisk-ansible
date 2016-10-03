@@ -1,7 +1,12 @@
 ---
-- name: installing python req
-  become: True
-  apt: name=python-pip state=latest
-- name: installing the req pkg
+- name: Install essentials
+  apt: name=build-essential state=present
+- name: Install python setuptools
+  apt: name=python-setuptools state=present
+- name: Install python-dev
+  apt: name=python-dev state=present
+- name: Install pip
+  apt: name=python-pip state=present
+- name: Installing the req pkg
   become: True
   pip: name=pexpect state=latest

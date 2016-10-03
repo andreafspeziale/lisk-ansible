@@ -1,3 +1,15 @@
 ---
-- name: opening pgsql to PSequel
+- name: Opening pgsql to PSequel editing pg_hba.conf
   lineinfile: dest=/home/vagrant/lisk-test/pgsql/data/pg_hba.conf line="host all all all password"
+- name: Opening pgsql to PSequel editing postgresql.conf
+  lineinfile: dest=/home/vagrant/lisk-test/pgsql/data/postgresql.conf regexp="#listen_addresses = 'localhost'" line="listen_addresses='*'"
+- name: Stopping pgsql server
+  become_user: vagrant
+  command: bash lisk.sh stop_db
+  args:
+    chdir: /home/vagrant/lisk-test
+- name: Starting pgsql server
+  become_user: vagrant
+  command: bash lisk.sh start_db
+  args:
+    chdir: /home/vagrant/lisk-test

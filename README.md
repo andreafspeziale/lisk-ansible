@@ -21,10 +21,17 @@ You can also check the loading status of bloackchain with this api
 
     - localhost:7000/api/loader/status/sync
 
+Now is possible to connect to Lisk PGSQL DB from a client (like http://www.psequel.com/) using:
+
+    - localhost as host
+    - vagrant as user
+    - password as password
+    - lisk_test as DB
+
+This is very useful for and ONLY LOCAL DEVELOPMENT
+
 # ToDo
-    - after turning the VM off and on, check if lisk has started
     - use custom templates for the lisk config.json
     - useful bash profile
     - install jq
-    - make auto apt upgrade-update
-    - install git -.-
+    - install git and more -.-
