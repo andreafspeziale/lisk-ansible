@@ -9,5 +9,5 @@
     responses:
         'install Lisk to': '/home/vagrant'
         'install NTP': 'y'
-    timeout: 600
+    timeout: 1000
     echo: yes

@@ -3,16 +3,19 @@
     hosts: all
     become: True
     vars:
-      - nodejs_version: "4.x"
-      - nodejs_npm_global_packages:
-        - name: forever
+    #   - nodejs_version: "4.x"
+    #   - nodejs_npm_global_packages:
+    #     - name: forever
       - mongodb_net_bindip: 0.0.0.0
+    pre_tasks:
+      - name: update apt cache
+        apt: update_cache=yes
     roles:
       - python
       - node
       # - geerlingguy.nodejs
       - lisk
-      - pgsql
+      # - pgsql
       - greendayonfire.mongodb
     tasks:
       - name: locale

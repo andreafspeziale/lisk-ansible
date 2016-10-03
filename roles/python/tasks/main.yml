@@ -1,10 +1,4 @@
 ---
-- name: install essentials
-  apt: name=build-essential state=latest
-- name: install python setuptools
-  apt: name=python-setuptools state=latest
-- name: install python-dev
-  apt: name=python-dev state=latest
 - name: installing python req
   become: True
   apt: name=python-pip state=latest
