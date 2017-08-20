@@ -1,4 +1,6 @@
 # lisk-ansible
+> With love by liskit delegate, for donation 10310263204519541551L
+
 This repository uses Vagrant + Ansible to create a Lisk node environment without pain.<br>
 It will also install the Node + packages and some other utils like MongoDB.
 
