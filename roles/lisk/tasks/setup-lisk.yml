@@ -7,6 +7,8 @@
     command: bash installLisk.sh install -r {{env}}
     responses:
         'install Lisk to': '/home/vagrant'
-        'install NTP': 'y'
+        'Would you like to install the Main or Test Client': '{{env}}'
+        'Would you like to synchronize from the Genesis Block': 'no'
+        'Would like to install NTP': 'y'
     timeout: 600
     echo: yes

@@ -13,6 +13,12 @@
   npm: name=forever global=yes state=present
 
 - name: Downloading the install script
-  get_url: url=https://downloads.lisk.io/scripts/installLisk.sh dest=/home/vagrant
+  get_url: url=https://downloads.lisk.io/lisk/{{env}}/installLisk.sh dest=/home/vagrant
 
 - include: setup-lisk.yml
+
+- name: Reload lisk after config changes
+  become_user: vagrant
+  command: bash lisk.sh reload
+  args:
+    chdir: /home/vagrant/lisk-test

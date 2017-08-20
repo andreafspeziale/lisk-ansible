@@ -8,6 +8,7 @@
       - name: update apt cache
         apt: update_cache=yes
     roles:
+      - common
       - python
       - node
       - lisk

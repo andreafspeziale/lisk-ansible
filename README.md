@@ -29,9 +29,3 @@ Now is possible to connect to Lisk PGSQL DB from a client (like http://www.psequ
     - lisk_test as DB
 
 This is very useful for and ONLY LOCAL DEVELOPMENT
-
-# ToDo
-    - use custom templates for the lisk config.json
-    - useful bash profile
-    - install jq
-    - install git and more -.-
